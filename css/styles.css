@@ -130,11 +130,17 @@ body:not(.animated) *:not(#panes) { transition: all 0s linear; }
 #app[data-frame="off"] #frame:before  { transform: rotateX(90deg) rotateY(0deg) translateX(0em) translateY(-0.02em);
                                         transform-origin: 100% 0; }
 
+                                        
 th, td {
   position: relative;
   width: 1em;
   height: 1em;
 }
+
+/* hidden piece*/
+td>div {
+  visibility: hidden;
+}  
 
 th { 
   vertical-align: top; 
