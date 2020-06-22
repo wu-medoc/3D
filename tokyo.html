@@ -29,13 +29,13 @@
 
 		<script type="module">
 
-			import * as THREE from './node_modules/three/build/three.module.js';
+			import * as THREE from './js/three/build/three.module.js';
 
-			import Stats from './node_modules/three/examples/jsm/libs/stats.module.js';
+			import Stats from './js/three/examples/jsm/libs/stats.module.js';
 
-			import { OrbitControls } from './node_modules/three/examples/jsm/controls/OrbitControls.js';
-			import { GLTFLoader } from './node_modules/three/examples/jsm/loaders/GLTFLoader.js';
-			import { DRACOLoader } from './node_modules/three/examples/jsm/loaders/DRACOLoader.js';
+			import { OrbitControls } from './js/three/examples/jsm/controls/OrbitControls.js';
+			import { GLTFLoader } from './js/three/examples/jsm/loaders/GLTFLoader.js';
+			import { DRACOLoader } from './js/three/examples/jsm/loaders/DRACOLoader.js';
 
 			var scene, camera, dirLight, stats;
 			var renderer, mixer, controls;
@@ -71,7 +71,7 @@
 			scene.add( dirLight );
 
 			// envmap
-			var path = 'node_modules/three/examples/jsm/textures/cube/Park2/';
+			var path = 'js/three/examples/jsm/textures/cube/Park2/';
 			var format = '.jpg';
 			var envMap = new THREE.CubeTextureLoader().load( [
 				path + 'posx' + format, path + 'negx' + format,
@@ -80,7 +80,7 @@
 			] );
 
 			var dracoLoader = new DRACOLoader();
-			dracoLoader.setDecoderPath( 'node_modules/three/examples/js/libs/draco/gltf/' );
+			dracoLoader.setDecoderPath( 'js/three/examples/js/libs/draco/gltf/' );
 
 			var loader = new GLTFLoader();
 			loader.setDRACOLoader( dracoLoader );
