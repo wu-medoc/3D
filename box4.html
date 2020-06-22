@@ -31,14 +31,14 @@
         //1.建立場景
         scene=new THREE.Scene();
         //2.建立曲面圖形物件
-        geometry=new THREE.BoxGeometry(500, 500, 500); //建立幾何形狀
+        geometry=new THREE.BoxGeometry(500, 700, 500); //建立幾何形狀(長,寬,高)
         material=new THREE.MeshBasicMaterial({  //建立材質
-        color: 0xff0000,
+        color: 0xBDF7,
         wireframe: true});
         mesh=new THREE.Mesh(geometry, material); //以幾何形狀與材質建立曲面
         scene.add(mesh);  //曲面圖形物件加入場景中
         //3.建立相機
-        camera=new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 1, 10000);
+        camera=new THREE.PerspectiveCamera(100, window.innerWidth/window.innerHeight, 1, 10000);
         camera.position.z=1000;
         //4.建立繪圖器
         renderer=new THREE.WebGLRenderer({antialias:true});  //建立 WebGL 繪圖器
