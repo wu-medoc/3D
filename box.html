@@ -10,13 +10,13 @@
 	</head>
 	<body>
         <script src="js/three.js"></script>
-        <!-- <script src="./node_modules/three/build/three.min.js"></script> -->
+        <!-- <script src="./js/three/build/three.min.js"></script> -->
 		<script type="module">
             			//滑鼠互動OrbitControls
-			import Stats from './node_modules/three/examples/jsm/libs/stats.module.js';
+			import Stats from './js/three/examples/jsm/libs/stats.module.js';
 
-            import { OrbitControls } from './node_modules/three/examples/jsm/controls/OrbitControls.js';
-            import { ConvexBufferGeometry } from './node_modules/three/examples/jsm/geometries/ConvexGeometry.js';
+            import { OrbitControls } from './js/three/examples/jsm/controls/OrbitControls.js';
+            import { ConvexBufferGeometry } from './js/three/examples/jsm/geometries/ConvexGeometry.js';
 
 			var scene = new THREE.Scene();
             var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
