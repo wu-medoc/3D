@@ -32,9 +32,15 @@
         scene=new THREE.Scene();
         //2.建立曲面圖形物件
         geometry=new THREE.BoxGeometry(500, 700, 500); //建立幾何形狀(長,寬,高)
-        material=new THREE.MeshBasicMaterial({  //建立材質
-        color: 0xBDF7,
-        wireframe: true});
+        //建立材質
+        var material1=new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture('img/mlogo.png')});
+        var material2=new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture('img/marble-piece-white.png')});
+        var material3=new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture('img/marble-piece-black.png')});
+        var material4=new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture('img/classic-square-white.png')});
+        var material5=new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture('img/classic-square-black.png')});
+        var material6=new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture('img/classic-frame.png')});
+        var materials = [material1, material2, material3, material4, material5, material6];
+        var material = new THREE.MeshFaceMaterial( materials );
         mesh=new THREE.Mesh(geometry, material); //以幾何形狀與材質建立曲面
         scene.add(mesh);  //曲面圖形物件加入場景中
         //3.建立相機
