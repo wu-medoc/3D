@@ -28,12 +28,12 @@
     animate(); //呼叫動畫函數
     //定義起始設定函數
     function init() {
-        //1.建立場景
+        //建立場景
         scene=new THREE.Scene();
-        //2.建立曲面圖形物件
+        //建立曲面圖形物件
         geometry=new THREE.BoxGeometry(500, 700, 500); //建立幾何形狀(長,寬,高)
         //建立材質
-        var material1=new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture('img/mlogo.png')});
+        var material1=new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture('img/marble-frame.png')});
         var material2=new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture('img/marble-piece-white.png')});
         var material3=new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture('img/marble-piece-black.png')});
         var material4=new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture('img/classic-square-white.png')});
@@ -43,15 +43,15 @@
         var material = new THREE.MeshFaceMaterial( materials );
         mesh=new THREE.Mesh(geometry, material); //以幾何形狀與材質建立曲面
         scene.add(mesh);  //曲面圖形物件加入場景中
-        //3.建立相機
+        //建立相機
         camera=new THREE.PerspectiveCamera(100, window.innerWidth/window.innerHeight, 1, 10000);
         camera.position.z=1000;
-        //4.建立繪圖器
+        //建立繪圖器
         renderer=new THREE.WebGLRenderer({antialias:true});  //建立 WebGL 繪圖器
         renderer.setClearColor("#ffffff");  //設定背景色為白色
         renderer.setSize(window.innerWidth, window.innerHeight); //設定畫布為瀏覽器大小
         document.body.appendChild(renderer.domElement); //將畫布加入瀏覽器 DOM 中
-        //5.滑鼠控制
+        //滑鼠控制
         controls = new OrbitControls( camera, renderer.domElement );
         controls.target.set( 0, 0.5, 0 );
         controls.update();
