@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>three.js webgl - convex geometry</title>
+		<title>box2</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<script src="js/three.js"></script>
@@ -41,7 +41,7 @@
                 scene.add( camera );    //將模型加入場景
                 //scene.lookAt(scene.position) 指定攝影機對著場景的方向
 
-				// 創建攝影機動作controls
+				// 創建攝影機動作controls(360度)
 
 				var controls = new OrbitControls( camera, renderer.domElement );
 				controls.minDistance = 20;
