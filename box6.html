@@ -103,14 +103,14 @@
                 //controls.update();
                 controls.enableDamping = true;
                 
-				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-				document.addEventListener( 'mousedown', onDocumentMouseDown, false );
-				document.addEventListener( 'keydown', onDocumentKeyDown, false );
-				document.addEventListener( 'keyup', onDocumentKeyUp, false );
+				document.addEventListener( 'mousemove', onDocumentMouseMove, true );
+				document.addEventListener( 'mousedown', onDocumentMouseDown, true );
+				document.addEventListener( 'keydown', onDocumentKeyDown, true );
+				document.addEventListener( 'keyup', onDocumentKeyUp, true );
 
 				//
 
-				window.addEventListener( 'resize', onWindowResize, false );
+				window.addEventListener( 'resize', onWindowResize, true );
 
 			}
 
