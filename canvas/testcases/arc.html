@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Arc Test</title>
+<style>
+
+body {
+  text-align: center
+}
+
+</style>
+<!--[if IE]><script src="../excanvas.js"></script><![endif]-->
+<script>
+
+window.onload = function() {
+  var ctx = document.getElementById('c').getContext('2d');
+  /**arc(x,y,radius,startAngle,endAngle,anticlockwise)
+  * x,y圓中心, radius半徑
+  * startAngle,endAngle 開始,結束的角度
+  * anticlockwise 描繪的方向(true逆時針,false順時針)
+  */
+
+  ctx.beginPath();
+  ctx.arc(25, 25, 20, 0, Math.PI, false);
+  ctx.stroke();
+
+  ctx.save();
+  ctx.scale(0.5, 0.5);  
+  
+  ctx.beginPath();
+  ctx.arc(75, 25, 20, 0, Math.PI * 2, false);
+  ctx.stroke();
+  ctx.restore();
+
+  ctx.beginPath();
+  ctx.arc(25, 75, 20, 0, Math.PI, true);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.arc(75, 75, 20, 0, Math.PI * 2, true);
+  ctx.stroke();
+
+  //四分之三圓弧(true逆時針)
+  ctx.beginPath();
+  ctx.arc(50, 200, 20, 0, 90* Math.PI / 180 , true);
+  ctx.stroke();
+  //四分之一圓弧(false順時針)
+  ctx.beginPath();
+  ctx.arc(50, 250, 20, 0, 90* Math.PI / 180 , false);
+  ctx.stroke();
+  //扇形(closePath需關閉路徑)
+  ctx.beginPath();
+  ctx.moveTo(50,250);
+  ctx.arc(50, 250, 20, 0, 90* Math.PI / 180 , false);
+  ctx.closePath();
+  ctx.stroke();
+
+
+  //arcTo描繪直線及其相連的圓弧
+  ctx.beginPath();
+  ctx.moveTo(200, 100);
+  ctx.arcTo(25,25,100,100,25);
+  ctx.stroke();
+
+};
+
+</script>
+</head>
+<body>
+
+<canvas id=c width=500 height=500></canvas>
+
+
+
+</body>
+</html>

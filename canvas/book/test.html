@@ -1,0 +1,37 @@
+<html>
+<head>
+<script type="application/x-javascript">
+function displayCanvas()
+	{
+			//取得canvas元素的DOM object
+			var canvas = document.getElementById("myCanvas");
+			//取得繪圖環境
+			var context = canvas.getContext("2d");
+			
+			//繪製四方形
+			context.fillRect(0, 0, 150, 100);
+			//繪製文字
+			context.fillText("Hello,Canvas!", 155, 110);
+			//開始繪製線條
+			context.beginPath();
+			//繪製線條
+			context.moveTo(0, 100);
+			context.lineTo(300, 100);
+			context.moveTo(150, 0);
+			context.lineTo(150, 200);
+			//依canvas的邊框繪製四方形
+			context.rect(0, 0, 300, 200);
+			//輸出至畫面
+			context.stroke();
+			//結束繪製線條
+			context.closePath();
+    }
+</script>
+</head>
+
+<body onload="displayCanvas();">
+<canvas id="myCanvas" width="300" height="200">Your browser does not support the canvas tag. At the time of writing, Firefox, Opera, and Chrome support this tag.</p> 
+<p>Here's an <a href="/pix/html_5/tags/html_canvas_tag.gif">image of what it's supposed to look like</a>.</canvas>
+</body>
+</html>
+

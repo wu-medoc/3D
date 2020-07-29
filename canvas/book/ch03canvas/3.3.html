@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>3.3</title>
+		<meta charset="UTF-8">
+	 </head>
+	 <body>
+		<canvas id="canvas1"  width="300"  height="200"></canvas>
+		<script type="text/javascript">
+			//取得canvas元素的DOM object
+			var canvas = document.getElementById("canvas1");
+			//取得繪圖環境
+			var context = canvas.getContext("2d");
+			
+			//繪製四方形
+			context.fillRect(0, 0, 150, 100);
+			//繪製文字
+			context.fillText("Hello,Canvas!", 155, 110);
+			//開始繪製線條
+			context.beginPath();
+			//繪製線條
+			context.moveTo(0, 100);
+			context.lineTo(300, 100);
+			context.moveTo(150, 0);
+			context.lineTo(150, 200);
+			//依canvas的邊框繪製四方形
+			context.rect(0, 0, 300, 200);
+			//輸出至畫面
+			context.stroke();
+			//結束繪製線條
+			context.closePath();
+		</script>
+	</body>
+</html>	

@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>執行preload聲音的範例</title>
+<script type="text/javascript">
+	//產生多個Audio物件並保持
+	var audios={
+		"262Hz": new Audio(
+		"http://upload.wikimedia.org/wikipedia/commons/0/03/262Hz.ogg"),
+		"392Hz": new Audio(
+		"http://upload.wikimedia.org/wikipedia/commons/7/71/392Hz.ogg")
+	};
+	//頁面讀取完之後將這頁面可使用的聲音資料讀取並先存入cache
+	function preload() {
+		for (var i in audios) {
+			audios[i].load();
+		}
+	}
+</script>
+</head>
+<body onload="preload()">
+<button onclick="audios['262Hz'].play()">262Hz</button>
+<button onclick="audios['392Hz'].play()">392Hz</button>
+</body>
+</html> 

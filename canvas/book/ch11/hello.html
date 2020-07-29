@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html manifest="hello.manifest" >
+<head>
+<meta charset="UTF-8">
+<title>Hello</title>
+<script type="text/javascript">
+function init() {
+	// 每10秒進行更新檢查
+	setInterval(function() {
+		applicationCache.update();
+	}, 10000);
+}
+// 快取更新過後，向使用者確認過後將瀏覽器重新載入
+applicationCache.onupdateready = function() {
+	if (confirm("有新的更新，是否要更新？")) {
+		location.reload();
+	}
+};
+</script>
+</head>
+<body onload="init()">
+<h1>應用程式快取的範例</h1>
+<p>您好!</p>
+</body>
+</html>

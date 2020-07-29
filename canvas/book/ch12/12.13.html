@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>本機儲存區瀏覽器</title>
+</head>
+<body onload="showAll()">
+<h1>本機儲存區瀏覽器</h1>
+鍵:<input id="k" type="text"> 値:<input id="v" type="text">
+<button onclick="save()">儲存</button>
+<button onclick="remove()">刪除</button>
+<button onclick="window.open(location.href);">開新視窗</button>
+<hr>
+<select id="entries" size=5 onchange="onEntrySelected()">
+</select>
+<script type="text/javascript">
+var key = document.getElementById("k");
+var value = document.getElementById("v");
+var entries = document.getElementById("entries");
+// 儲存區變更的話，重新顯示一覽表
+window.addEventListener("storage", showAll, false);
+// 顯示儲存區全部的內容
+function showAll() {
+	// 清除清單
+	entries.innerHTML = "";
+	// 走訪儲存區的內容
+	for (var i = 0; i < localStorage.length; i++) {
+		var k = localStorage.key(i);
+		entries.options[entries.options.length] =
+			new Option(k + ":" + localStorage[k], k);
+	}
+}
+// 將值存放到儲存區中
+function save() {
+	localStorage[key.value] = value.value ;
+}
+// 將值由儲存區刪除
+function remove() {
+	delete localStorage[key.value] ;
+}
+// 將選擇的項目顯示在文字方塊中
+function onEntrySelected() {
+	var selectedOption = entries.options[entries.selectedIndex];
+	key.value = selectedOption.value;
+	value.value = localStorage[selectedOption.value];
+}
+</script>
+</body>
+</html>

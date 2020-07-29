@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+	<canvas id="canvas1" width="300" height="400"></canvas>
+	<script type="text/javascript">
+		// 取得canvas元素的DOM物件
+		var canvas = document.getElementById("canvas1");
+		// 取得繪圖環境
+		var cx = canvas.getContext("2d");
+		cx.font='24px "MS PGothic"';
+		cx.fillText("測一下字串的寬度",5,30);
+		cx.fillText("測一下字串的寬度",5,65,50);
+		cx.strokeText("測一下字串的寬度",5,95);
+		cx.strokeText("測一下字串的寬度",5,125,50);
+
+	</script>
+</body>
+</html>

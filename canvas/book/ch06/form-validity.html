@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript">
+</script>
+</head>
+<body>
+
+<!--利用novalidate屬性停用自動輸入驗證
+於onsubmit之前執行輸入驗證
+-->
+<form novalidate onsubmit="return customValidate()">
+姓:<input type="text" name="lastName" required><br>
+名:<input type="text" name="firstName" required><br>
+<input type="submit" value="傳送">
+<script type="text/javascript">
+//個人的輸入驗證
+function customValidate() {
+	var form = document.forms[0];
+	var lastName = form.lastName;
+	var firstName = form.firstName;
+	// 首先，清除客製錯誤
+	lastName.setCustomValidity("");
+	//如果通過了預設的輸入驗證
+	if (form.checkValidity()) {
+		//執行客製的輸入驗證
+		if (lastName.value.length + firstName.value.length > 20) {
+			//如果有錯誤的話即顯示			
+			lastName.setCustomValidity("請輸入姓與名合計共20字。");
+			return form.checkValidity();
+			//return false;
+		}
+		return true;
+	}
+	return false;
+}
+</script>
+</form>
+</body>
+</html>

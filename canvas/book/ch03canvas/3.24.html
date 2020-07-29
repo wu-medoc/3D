@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+	<canvas id="canvas1" width="300" height="400"></canvas>
+	<script type="text/javascript">
+		// 取得canvas元素的DOM物件
+		var canvas = document.getElementById("canvas1");
+		// 取得繪圖環境
+		var cx = canvas.getContext("2d");
+
+		cx.fillText("先生您好", 30, 30);
+		//儲存狀態
+		cx.save();
+		//放大
+		cx.scale(2, 1.5);
+		cx.fillText("先生您好，scale()", 30, 30);
+		   
+		 //回復到放大前的狀態
+		cx.restore();
+		//修改前，指定縮小率來回復到放大前的狀態
+		// cx.scale(1/2, 1/1.5);
+
+		cx.save();
+		var angle = 20 * Math.PI /180;
+		//旋轉
+		cx.rotate(angle);
+		cx.fillText("先生您好，rotate()", 30, 30);
+		cx.restore();
+		cx.save();
+		//移動
+		cx.translate(50, 50);
+		cx.fillText("先生您好，translate()", 30, 30);
+		cx.restore();
+
+	</script>
+</body>
+</html>

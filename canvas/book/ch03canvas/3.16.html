@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+	<canvas id="canvas1" width="300" height="400"></canvas>
+	<script type="text/javascript">
+		// 取得canvas元素的DOM物件
+		var canvas = document.getElementById("canvas1");
+		// 取得繪圖環境
+		var cx = canvas.getContext("2d");
+		/**做線性漸層
+		* createLinearGradient(x0, y0, x1, y1)
+		* x0, y0座標開始, 往x1, y1
+		*/
+		var g = cx.createLinearGradient(0, 0, 200, 0);
+		//設定起點為白色，終點為黑色
+		g.addColorStop(0, "white");
+		g.addColorStop(1, "black");
+		//設定填色樣式為漸層
+		cx.fillStyle = g;
+		//塗填四方形
+		cx.fillRect(0, 0, 200, 200);
+	</script>
+</body>
+</html>

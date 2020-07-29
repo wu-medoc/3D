@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>3.4</title>
+		<meta charset="UTF-8">
+	 </head>
+	 <body>
+		<canvas id="canvas1"  width="300"  height="200"></canvas>
+		<script type="text/javascript">
+			//取得canvas元素的DOM object
+			var canvas = document.getElementById("canvas1");
+			//取得繪圖環境
+			var cx = canvas.getContext("2d");
+
+			//以(20, 20)為左上方的頂點，描繪寬100px高度50px的四方形
+			cx.strokeRect(20, 20, 100, 50);
+			
+		</script>
+	</body>
+</html>	

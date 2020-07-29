@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript">
+var MYORIGIN = location.protocol + "//" + location.host;
+// 產生通道
+var channel = new MessageChannel ();
+// 對主頁面傳送1號通訊埠
+top.postMessage("", [channel.port1], MYORIGIN);
+// 由2號通訊埠讀出訊息
+channel.port2.onmessage = function(e) {
+	document.body.innerHTML += "<div>" + e.data + "</div>";
+};
+</script>
+</head>
+<body>
+</body>
+</html> 

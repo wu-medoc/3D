@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript">
+</script>
+</head>
+<body>
+<!-- 利用forminput 事件，控制傳送按鈕是否可使用-->
+<form onforminput="sendButton.disabled=message.value.length <= 0 || message.value.length > 140;">
+  請輸入140字以內的文字。<br>
+  剩餘:
+  <!--利用捕捉forminput 事件，即時顯示剩餘可輸入字數 -->
+     <output onforminput ="value = (140 -message.value.length);">140</output>
+  文字<br>
+  <textarea name="message"></textarea>
+  <button name="sendButton" disabled>傳送</button>
+</form>
+</body>
+</html>

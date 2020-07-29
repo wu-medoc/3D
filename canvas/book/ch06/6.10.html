@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript">
+</script>
+</head>
+<body>
+<progress id="progressBar" max=0 value=0>
+    <!-- 以下內容針對不支援progress元素的瀏覽器　-->
+    <span class="progressValue">0</span>/
+    <span class="progressMax">0</span>完成...
+</progress>
+<script>
+function updateProgress(value, max) {
+  var p = document.getElementById ("progressBar");
+  // 變更progress元素屬性值
+  p.max = max, p.value = value;
+  // 變更progress元素內部的顯示
+  p.getElementByClassName("progressValue")[0]. textContent = value;
+  p.getElementByClassName("progressMax")[0].textContent = max;
+}
+</script>
+</body>
+</html>

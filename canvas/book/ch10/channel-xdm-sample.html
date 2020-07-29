@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>公開通訊埠的範例</title>
+<script type="text/javascript">
+var ports = [];
+// 接收訊息的處理常式
+onmessage = function(e) {
+// 儲存包含在訊息中的通訊埠
+	for (var i = 0; i < e.ports.length ; i++) {
+		ports.push( e.ports[i] );
+	}
+};
+// 接下「新增顯示範圍」的處理
+function addDisplay() {
+	var frame = document.createElement("iframe");
+	frame.width = 200, frame.height = 200;
+	frame.src = "channel-xdm-frame.html";
+	document.getElementById("messageLogs").appendChild(frame);
+}
+//按下「傳送」時的處理
+function showMsg() {
+	var msg = document.getElementById("msg").value;
+	// 對所有的通訊埠傳送訊息
+	for (var i = 0; i < ports.length; i++) { 
+		ports[i].postMessage(msg) ;
+	}
+}
+</script>
+</head>
+<body>
+<h1>公開通訊埠的範例</h1>
+<input id="msg" type="text">
+<button onclick="showMsg()">傳送</button>
+<button onclick="addDisplay()">新增顯示範圍</button>
+<div id="messageLogs"></div>
+</body>
+</html>

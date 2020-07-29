@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript">
+var MYORIGIN = location.protocol + "//" + location.host;
+// 接收訊息
+window.addEventListener("message" , function(e) {
+	// 檢查送信端的Origin
+	if ( e.origin == MYORIGIN ) {
+		document.body.innerHTML =
+			"<div>" + e.data.date + " 傳送的值為[" +
+			e.data.number + "]。";
+	}
+}, false);
+</script>
+</head>
+<body>
+</body>
+</html>

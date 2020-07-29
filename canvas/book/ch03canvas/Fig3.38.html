@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+	<canvas id="canvas1" width="800" height="400"></canvas>
+	<script type="text/javascript">
+		// 取得canvas元素的DOM物件
+		var canvas = document.getElementById("canvas1");
+		// 取得繪圖環境
+		var cx = canvas.getContext("2d");
+		cx.beginPath();
+		cx.moveTo(50,60);
+		cx.lineTo(800,60);
+		cx.stroke();
+		cx.font='24px "MS PGothic"';
+		cx.fillText("top",50,30);
+		cx.fillText("hanging",170,30);
+		cx.fillText("middle",290,30);
+		cx.fillText("alphabetic",410,30);
+		cx.fillText("ideographic",530,30);
+		cx.fillText("bottom",650,30);
+		cx.textBaseline = "top";
+		cx.fillText("xyZㄅ達",50,60);
+		cx.textBaseline = "hanging";
+		cx.fillText("xyZㄅ達",170,60);
+		cx.textBaseline = "middle";
+		cx.fillText("xyZㄅ達",290,60);
+		cx.textBaseline = "alphabetic";
+		cx.fillText("xyZㄅ達",410,60);
+		cx.textBaseline = "ideographic";
+		cx.fillText("xyZㄅ達",530,60);
+		cx.textBaseline = "bottom";
+		cx.fillText("xyZㄅ達",650,60);
+	</script>
+</body>
+</html>

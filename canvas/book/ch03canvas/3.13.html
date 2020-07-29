@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+	<canvas id="canvas1" width="300" height="400"></canvas>
+	<script type="text/javascript">
+		// 取得canvas元素的DOM 物件
+		var canvas=document.getElementById("canvas1");
+		//取得繪圖環境
+		var cx = canvas.getContext("2d");
+
+		cx.beginPath();
+		//描繪半徑25pixel的圓
+		cx.arc(50, 50, 25, 0, 2 * Math.PI, true);
+		cx.stroke()
+
+	</script>
+</body>
+</html>

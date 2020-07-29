@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+	<canvas id="canvas1" width="300" height="400"></canvas>
+	<script type="text/javascript">
+		// 取得canvas元素的DOM物件
+		var canvas = document.getElementById("canvas1");
+		// 取得繪圖環境
+		var cx = canvas.getContext("2d");
+		cx.shadowOffsetX =5;
+		cx.shadowOffsetY =5;
+		cx.shadowColor = "gray"
+		cx.shadowBlur = 2;
+		cx.fillRect(10, 10, 50, 50);
+	</script>
+</body>
+</html>

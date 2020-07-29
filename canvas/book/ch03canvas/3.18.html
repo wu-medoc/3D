@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+	<canvas id="canvas1" width="300" height="400"></canvas>
+	<script type="text/javascript">
+		// 取得canvas元素的DOM物件
+		var canvas = document.getElementById("canvas1");
+		// 取得繪圖環境
+		var cx = canvas.getContext("2d");
+		//產生img元素
+		var image = new Image();
+		//圖像讀取結束之後開始執行canvas繪圖
+		image.onload = function(){
+			//重複圖像以做成圖樣
+			var pattern = cx.createPattern(image, "repeat");
+			//設定塗入圖樣
+			cx.fillStyle = pattern;
+			//繪製四邊形
+			cx.fillRect(0, 0, 100, 100);
+		};
+		//開始讀取圖像
+		image.src ="whatwg.png";
+	</script>
+</body>
+</html>

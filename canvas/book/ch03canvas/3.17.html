@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+	<canvas id="canvas1" width="300" height="400"></canvas>
+	<script type="text/javascript">
+		// 取得canvas元素的DOM物件
+		var canvas = document.getElementById("canvas1");
+		// 取得繪圖環境
+		var cx = canvas.getContext("2d");
+		/**做圓形漸層
+		* createRadialGradient(x, y, radius, x1, y1, radius1)
+		* x,y圓中心座標, radius起始圓的半徑 
+		* x1,y1漸變結束圓的座標
+		* radius1終點圓的半徑
+		*/
+		var g = cx. createRadialGradient(90, 90, 0, 50, 50, 200);
+		g.addColorStop(0, "white");
+		g.addColorStop(1, "black");
+		cx.fillStyle = g;
+		/**繪製圓形並塗色填arc(x,y,radius,startAngle,endAngle,anticlockwise)
+		* x,y圓中心座標, radius半徑
+		* startAngle,endAngle 開始,結束的角度
+		* anticlockwise 描繪的方向(true逆時針,false順時針)
+		*/
+		cx.arc(100, 100, 50, 0, 2 * Math.PI, true);
+		cx.fill();
+	</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+	<canvas id="canvas1" width="300" height="400"></canvas>
+	<script type="text/javascript">
+		// 取得canvas元素的DOM物件
+		var canvas = document.getElementById("canvas1");
+		// 取得繪圖環境
+		var cx = canvas.getContext("2d");
+		// 設定裁剪範圍
+		cx.beginPath();
+		cx.arc(85, 160, 50, 0, 2 * Math.PI, true);
+		//指定路徑內部為裁剪的範圍
+		cx.clip();
+		// 圖像的描繪
+		var image = new Image();
+		image.onload = function() {
+			cx.drawImage(image, 0, 0, canvas.width, canvas.height);
+		};
+		image.src ="img.jpg";
+	</script>
+</body>
+</html>

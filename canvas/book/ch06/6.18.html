@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript">
+</script>
+</head>
+<body>
+<!--
+  novalidateg屬性可提用輸入的自動驗證、
+  onsubmit時會進行自訂驗證
+-->
+<form novalidate onsubmit="return customValidate()">
+姓:<input type="text" name="lastName" required autocomplete="off" placeholder="你的姓"><br>
+名:<input type="text" name="firstName" required placeholder="你的名"><br><br><br>
+
+喜歡的水果:<input type="text" name="fruit" required list="fruits"><br><br><br><br>
+<datalist id="fruits">
+	<option value="apple" label="蘋果">
+	<option value="orange" label="橘子">
+	<option value="grape" label="葡萄">
+</datalist>
+
+<input type="submit" value="送出">
+<script type="text/javascript">
+// 自訂驗證
+function customValidate() {
+  var form = document.forms[0];
+  var lastName = form.lastName;
+  var firstName = form.firstName;
+  // 首先清除自訂錯誤訊息
+  lastName.setCustomValidity("");
+  // 是否通過預設的驗證
+  if (form.checkValidity()) {
+    // 進行自訂驗證
+    if (lastName.value.length + firstName.value.length > 20) {
+      // 若錯誤顯示訊息
+      lastName.setCustomValidity("姓と名は合計20文字以内で入力してください。");
+      return form.checkValidity();
+    }
+    return true;
+  }
+  var fruit = form.fruit;
+  alert(fruit.selectedOption);
+  return false;
+}
+</script>
+</form>
+</body>
+</html>

@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+	<canvas id="canvas1" width="300" height="400"></canvas>
+	<script type="text/javascript">
+		// 取得canvas元素的DOM物件
+		var canvas = document.getElementById("canvas1");
+		// 取得繪圖環境
+		var cx = canvas.getContext("2d");
+
+		//產生img元素
+		var image = new Image();
+		//完成圖像讀取之後
+		image.onload = function() {
+		    //繪製圖像
+		    cx.drawImage(image, 0, 0);
+		    //使圖像半透明，描繪反轉後的圖像
+		    cx.globalAlpha = .3;
+		    cx.transform(1, 0, 0, -0.5, 0, image.height * 1.5);
+		    cx.drawImage(image, 0, 0);
+		};
+		// reset圖像的URL，開始讀取
+		image.src = "w3c_home.png"
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+	<canvas id="canvas1" width="300" height="400"></canvas>
+	<script type="text/javascript">
+		// 取得canvas元素的DOM 物件
+		var canvas=document.getElementById("canvas1");
+		//取得繪圖環境
+		var cx = canvas.getContext("2d");
+
+		cx.beginPath();
+		//以(50, 50)為扇形的中心
+		cx.moveTo(50, 50);
+		//描繪扇形的圓弧。自動拉一條由中心到圓弧起點的直線
+		cx.arc(50, 50, 25, 0, 90 *Math.PI/180, false);
+		//關閉路徑。自動拉一條由圓弧的終點到中心的直線
+		cx.closePath();
+		cx.stroke();
+
+	</script>
+</body>
+</html>

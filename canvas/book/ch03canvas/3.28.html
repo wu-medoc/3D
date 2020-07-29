@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+	<canvas id="canvas1" width="300" height="400"></canvas>
+	<script type="text/javascript">
+		// 取得canvas元素的DOM物件
+		var canvas = document.getElementById("canvas1");
+		// 取得繪圖環境
+		var cx = canvas.getContext("2d");
+
+		//利用變更alpha的設定值來改變，由x, y, w, h所設定成的範圍的透明度
+		//alpha可設定值為0.0~1.0
+		function alphaRect(context, alpha, x, y, w, h) {
+			//由canvas取得圖像
+			var imageData = context.getImageData(x, y, w, h) ;
+			//掃描bitmap
+			for (var i = 0; i < imageData.data.length; i++){
+				//變更透明度
+				if ( i % 4 == 3) {
+					//像素操作的透明度可指定範圍為0~255
+					imageData.data[i] =255 * alpha;
+				}
+			}
+			//變更後的點陣圖寫入canvas
+			context.putImageData(imageData, x, y);
+		}
+
+		cx,fillStyle = "red";
+		cx.fillRect(20, 20, 100, 100);
+		cx.fillStyle = "green";
+		cx.fillRect(50,50, 100, 100);
+		
+		alphaRect(cx, 0.5, 40, 60, 80, 40);
+
+	</script>
+</body>
+</html>

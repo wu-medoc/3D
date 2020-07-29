@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+	<canvas id="canvas1" width="300" height="400"></canvas>
+	<script type="text/javascript">
+		// 取得canvas元素的DOM物件
+		var canvas = document.getElementById("canvas1");
+		// 取得繪圖環境
+		var cx = canvas.getContext("2d");
+		var message = "先生您好";
+		var textHeight =32;
+		cx.font = textHeight + 'px "MS PGothic"';
+		//取得顯示文字的寬度
+		var textWidth = cx.measureText(message).width;
+		//繪製文字的背景
+		cx.fillStyle ="pink";
+		cx.fillRect(0, 0, textWidth, textHeight);
+		//繪製文字
+		cx.fillStyle = "black";
+		cx.textBaseline ="bottom";
+		cx.fillText(message,  0, textHeight);
+	</script>
+</body>
+</html>

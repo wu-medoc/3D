@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>區段儲存區瀏覽器</title>
+</head>
+<body onload="showAll()">
+<h1>區段儲存區瀏覽器</h1>
+鍵:<input id="k" type="text"> 值:<input id="v" type="text">
+<button onclick="save()">儲存</button>
+<button onclick="remove()">刪除</button>
+<button onclick="window.open(location.href);">開新視窗</button>
+<hr>
+<select id="entries" size=5 onchange="onEntrySelected()">
+</select>
+<button onclick="showAll()">重新顯示</button>
+<script type="text/javascript">
+var key = document.getElementById("k");
+var value = document.getElementById("v");
+var entries = document.getElementById("entries");
+// 顯示儲存區內所有的內容
+function showAll() {
+	// 清除清單
+	entries.innerHTML = "";
+	// 走查儲存區的內容
+	for (var i = 0; i < sessionStorage.length; i++) {
+		var k = sessionStorage.key(i) ;
+		entries.options[entries.options.length] =
+		new Option(k + ":" + sessionStorage[k] , k);
+	}
+}
+// 將值儲存在儲存區中
+function save() {
+	sessionStorage[key.value] = value.value;
+	showAll();
+}
+// 將值由儲存區刪除
+function remove() {
+	delete sessionStorage[key.value];
+	showAll();
+}
+// 將選擇的項目顯示在文字方塊中
+function onEntrySelected() {
+	var selectedOption = entries.options[entries.selectedIndex];
+	key.value = selectedOption.value;
+	value.value = sessionStorage[selectedOption.value];
+}
+</script>
+</body>
+</html>

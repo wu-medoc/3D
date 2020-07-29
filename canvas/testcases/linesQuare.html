@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Line Width Test</title>
+<style>
+
+body {
+  text-align: center
+}
+
+</style>
+<!--[if IE]><script src="../excanvas.js"></script><![endif]-->
+<script>
+
+window.onload = function() {
+    //取得繪圖環境及canvas元素的DOM物件
+    var ctx = document.getElementById('c').getContext('2d');
+    //繪四方形(填滿)
+    ctx.fillRect(0, 0, 150, 100);           //(x,y,w,h)
+    //繪四方形(不填滿)
+    ctx.strokeRect(150, 100, 150, 100);     //(x,y,w,h)
+    //繪文字
+    ctx.fillText("Quare", 100, 110);
+
+    //繪線
+    ctx.beginPath();    
+    //繪十字線條
+    ctx.moveTo(0,100);      //座標(0,y)
+    ctx.lineTo(300,100);    //(canvas.width,y)
+    ctx.moveTo(150,0);      //座標(x,0)
+    ctx.lineTo(150,200);    //(x,canvas.height)
+    //繪對角線
+    ctx.moveTo(0,0);        //座標(0,0)
+    ctx.lineTo(300,200);    //(canvas.width,canvas.height)
+    ctx.moveTo(300,0);      //座標(canvas.width,0)
+    ctx.lineTo(0,200);      //(0,canvas.height)
+    //繪四方形
+    ctx.rect(0, 0, 300, 200);    
+    //結束繪製
+    ctx.closePath();
+
+    //輸出至畫面
+    ctx.stroke();
+};
+
+</script>
+</head>
+<body>
+
+<canvas id=c width=500 height=500></canvas>
+
+
+</body>
+</html>

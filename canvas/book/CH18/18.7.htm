@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>File API範例程式</title>
+<script>
+function readFile() {
+	// 取得選擇的檔案
+	var file = document.getElementById("file"). files[0] ;
+	// 顯示檔案名以及檔案大小
+	document.getElementById("fileName").textContent = file.name ;
+	document.getElementById("fileSize").textContent =
+		"(" + file.size + "byte)";
+	// 讀取檔案內容
+	var reader = new FileReader ();
+	// 設定讀取成功時的事件處理常式
+	reader.onload = function() {
+		var display = document.getElementById("content");
+		display.textContent = reader.result ;
+	};
+	// 指定檔案編碼以讀入檔案
+	var encodingList = document.getElementById("encoding");
+	var encoding = encodingList.options[encodingList.selectedIndex].value;
+	reader.readAsText(file, encoding);
+}
+</script>
+</head>
+<body>
+<h1>File API的範例程式</h1>
+<input id="file" type="file">
+<select id="encoding">
+	<option>UTF-8</option>
+	<option>Big5</option>
+	<option>GB2312</option>
+</select>
+<button onclick="readFile()">讀入</button><br>
+<div> 
+	<span id="fileName">檔案名稱</span><span id="fileSize">(檔案大小)</span>
+</div>
+<textarea id="content" readonly
+	style="width: 300px; height: 400px;"></textarea>
+</body>
+</html> 

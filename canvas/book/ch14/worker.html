@@ -1,0 +1,23 @@
+<html>
+<head>
+<title>SharedWorker範例</title>
+<meta charset="UTF-8">
+</head>
+<body>
+<h1>SharedWorker範例</h1>
+名稱:<input id="name">
+<button onclick="newWorker()">產生共享Worker</button>
+<script>
+// 按下「產生共享Worker」時的處理
+function newWorker() {
+	var name = document.getElementById("name").value;
+	// 產生共享Worker
+	var worker = new SharedWorker("worker.js", name);
+	// 接收由Worker傳來的訊息以提示方塊來顯示
+	worker.port.onmessage = function(e) {
+		alert(e.data);
+	};
+}
+</script>
+</body>
+</html>

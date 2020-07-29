@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+	<canvas id="canvas1" width="300" height="400"></canvas>
+	<script type="text/javascript">
+		// 取得canvas元素的DOM 物件
+		var canvas=document.getElementById("canvas1");
+		//取得繪圖環境
+		var cx = canvas.getContext("2d");
+		//產生img元素
+		var image = new Image();
+		//圖像讀取結束之後，執行canvas的寫入
+		image.onload = function() {
+			//在canvas中顯示完整圖像
+			cx. drawImage(image, 0, 0, canvas.width, canvas.height);
+		};
+		//開始讀取圖像
+		image.src ="img.jpg";
+	</script>
+</body>
+</html>

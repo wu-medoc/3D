@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style type="text/css">
+ul, li {
+ -webkit-user-drag: element;
+}
+</style>
+<script type="text/javascript">
+// drag開始的處理
+function onDragStart (event) {
+	//只將li元素當成處理對象
+	if (event.target.tagName.toLowerCase() == "li") {
+		// 資料收入DataTransfer
+		event.dataTransfer.setData("listItemId", event.target.id);
+	} else {
+		// li元素以外的情況即取消處理
+		event.preventDefault();
+	}
+}
+
+//drop 事件處理器  
+function onDrop(event) {
+	// 取得拖曳的資料(清單項目的ID)
+	var id = event.dataTransfer.getData("listItemId");
+	var li = document.getElementById(id);
+	// 從另一方的ul元素刪除li元素，增加drop端的ul元素
+	if (li && li.parentNode != event.currentTarget) {
+		li.parentNode.removeChild(li);
+		event.currentTarget.appendChild(li);
+	}
+	// 處理了drop動作之後，停止 event bubbling
+	event.stopPropagation();
+}
+
+// dragover 事件處理器
+function onDragOver(event)  {
+	//為了接受拖曳，取消預設動作
+	event.preventDefault();
+}
+//dragenter 事件的處理器
+function onDragEnter(event)  {
+	// 只有存於DataTransfer中的資料類型
+	// 為只有包含"listItemId"的情況，才接受拖曳
+	var types = event.dataTransfer.types;
+	for (var i =0; i < types.length; i++) {
+		if (types[i] == "listItemId") {
+			event.preventDefault();
+			return;
+		}
+	}
+}
+</script>
+</head>
+<body>
+<!--於ondragstart屬性內呼叫onDragStart函數 -->
+<ul id ="list1"
+  ondragstart="onDragStart(event)"
+  ondragenter="onDragEnter(event)"
+  ondragover="onDragOver(event)"
+  ondrop="onDrop(event)">
+  <li id="apple1" draggable="true">蘋果</li>
+  <li id="grape1" draggable="true">葡萄</li>
+  <li id="orange1" draggable="true">橘子</li>
+</ul>
+
+<ul id="list1"
+  ondragstart="onDragStart(event)"
+  ondragenter="onDragEnter(event)"
+  ondragover="onDragOver(event)"
+  ondrop="onDrop(event)">
+  <li id="apple1" draggable="true">APPLE</li>
+  <li id="grape1" draggable="true">GRAPE</li>
+  <li id="orange1" draggable="true">ORANGE</li>
+</ul>
+</body>
+</html>

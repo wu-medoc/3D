@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+.messageLog {
+	width: 200px; height: 200px;
+	overflow: scroll; float: left;
+}
+</style>
+<title></title>
+<script type="text/javascript">
+// 產生通道
+var channel = new MessageChannel() ;
+// 讓通訊埠變得可以使用
+channel.port1.start() ; channel.port2.start() ;
+// 按下「新增顯示範圍」按鍵時的處理
+function addDisplay() {
+	// 產生div
+	var div = document.createElement("div");
+	div.className = "messageLog";
+	document.getElementById("messageLogs").appendChild(div);
+	// 在2號通訊埠新增事件處理常式
+	channel.port2.addEventListener("message" , function(e) {
+		div.innerHTML += "<div>" + e.data + "</div>";
+	}, false);
+}
+// 按下「傳送」按鍵時的處理
+function showMsg() {
+	var msg = document.getElementById("msg").value;
+	// 在1號通訊埠新增事件處理常式
+	channel.port1.postMessage(msg);
+}
+</script>
+</head>
+<body>
+<h1>通道式訊息傳遞的範例</h1>
+<input id="msg" type="text">
+<button onclick="showMsg()">傳送</button>
+<button onclick="addDisplay()">新增顯示範圍</button>
+<div id="messageLogs"></div>
+</body>
+</html>

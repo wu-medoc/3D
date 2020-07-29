@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript">
+function init() {
+  var editor = document.getElementById("editor");
+  // 移動focus到可編輯的元素
+  editor.focus();
+  
+  var selection = window.getSelection();
+  //將元素設定成被選擇的狀態
+  selection.selectAllChildren(editor);
+  //將游標移至末端
+  selection.collapseToEnd();
+  //移動游標，利用collapse()的話，只寫1行也可完成
+  //selection.collapse(editor, 1);
+}
+</script>
+</head>
+<body onload="init()">
+<div id="editor" contenteditable>
+    請輸入文字
+</div>
+</body>
+</html>

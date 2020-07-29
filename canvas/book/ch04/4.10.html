@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> 簡易影片播放器</title>
+<script type="text/javascript">
+function init() {
+	var video = document.getElementById("video");
+	// 利用addEventListener method取得 事件
+	video.addEventListener("timeupdate", function() {
+		var timeDisplay = document.getElementById("time");
+		//顯示到目前為止播放的秒數
+		timeDisplay.innerHTML = Math.floor(video.currentTime) + "/"+
+		Math.floor(video.duration) + "(秒)"
+	}, false);
+	video.addEventListener("error", function() {
+		var error = video.error;
+		switch(error.code) {
+			case 1:
+				alert("下載中止");
+				break;  
+			case 2:
+				alert("下載因網路錯誤而中止");
+				break;
+			case 3:
+				alert("解碼失敗");
+				break;
+			case 4:
+				alert("不支援的檔案格式");
+				break;
+		}
+	}, false) ;
+
+}
+
+function playOrPauseVideo(){
+	var videoUrl = document.getElementById("videoUrl").value;
+	var video = document.getElementById("video");
+	// 影片不為播放中狀態
+	if (video.paused) {
+		// URL如果改變了，重新讀取媒體資料
+		if (videoUrl != video.src) {
+			video.src = videoUrl;
+			video.load();
+		} else {  
+			//播放影片
+			video.play();
+		}
+		document.getElementById("playButton").value = "暫停";
+	} else {
+		//暫停
+		video.pause();
+		document.getElementById("playButton").value = "播放";
+	}
+}
+</script>
+</head>
+<body onload="init()">
+<!-- 為了設定成自動播放影片，讀取結束之後自動開始播放-->
+<video id="video" width="400" height="300" autoplay></video><br>
+影片的URL:<input type="text" id="videoUrl">
+<input id="playButton" type="button" onclick="playOrPauseVideo()"
+value="播放"><span id="time"></span>
+</body>
+</html> 

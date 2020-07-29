@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript">
+function execEditCommand() {
+  var commandId = document.getElementById("commandId");
+  var commandShowUI = document.getElementById("commandShowUI");
+  var commandValue = document.getElementById("commandValue");
+  try {
+    document.execCommand(commandId.value, !!commandShowUI.value, commandValue.value);
+  } finally {
+  }
+}
+function execEditCommandEnabled() {
+  var commandId = document.getElementById("commandId");
+  alert(document.queryCommandEnabled(commandId.value));
+}
+function execEditCommandSupported() {
+  var commandId = document.getElementById("commandId");
+  alert(document.queryCommandSupported(commandId.value));
+}
+function showContent(text) {
+  var editor = document.getElementById("editor");
+  alert(text ? editor.textContent : editor.innerHTML);
+}
+function clearInputs() {
+  var inputs = document.querySelectorAll("input[type='text']");
+  for (var i = 0; i < inputs.length; i++) {
+    inputs[i].value = "";
+  }
+}
+</script>
+</head>
+<body>
+<div id="editor" contenteditable>
+  This area is <em>enabled</em> for editing
+</div>
+ID:<input type="text" id="commandId">
+ShowUI:<input type="text" id="commandShowUI">
+Value:<input type="text" id="commandValue"><br>
+<button onclick="execEditCommand()">執行命令</button>
+<button onclick="execEditCommandEnabled()">queryCommandEnabled</button>
+<button onclick="execEditCommandSupported()">queryCommandSupported</button>
+<button onclick="clearInputs()">清除</button>
+<button onclick="showContent()">顯示HTML內容</button>
+<button onclick="showContent(true)">顯示內容</button>
+</body>
+</html>

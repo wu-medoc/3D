@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>跨文件傳遞訊息範例</title>
+<script type="text/javascript">
+var MYORIGIN = location.protocol + "//" + location.host;
+function init() {
+	var iframe = document.getElementsByTagName("iframe")[0];
+	//每一秒對IFrame進行訊息的傳送
+	setInterval(function() {
+		// 將現在時間轉換為字串
+		var date = new Date();
+		var dateStr =
+			date.getFullYear() + "/" +
+			(date.getMonth() + 1) + "/" +
+			date.getDate() +
+			" " +
+			date.getHours() + ":" +
+			date.getMinutes() + ":" +
+			date.getSeconds();
+		// 以亂數產生數值
+		var number = Math.floor(Math.random() * 100);
+		// 對IFrame傳送訊息
+		iframe.contentWindow.postMessage({
+			date: dateStr,
+			number: number
+		}, MYORIGIN);
+		document.getElementById("msg").innerHTML =
+			dateStr + " 產生的值為" + number + "。";
+	}, 1000);
+}
+</script>
+</head>
+<body onload="init()">
+<div id="msg"></div>
+<iframe src=frame.html width=500 height=200></iframe>
+</body>
+</html>

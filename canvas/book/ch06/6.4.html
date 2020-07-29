@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript">
+//選擇檔案時呼叫的函數
+function showFileInfo() {
+   // 存取files屬性得到已選擇檔案的資訊
+   var selectedFiles = document.getElementById("file").files;
+   var fileInfos = [];
+   // 選擇的多數檔案以loop處理
+   for (var i = 0; i<selectedFiles.length; i++){
+     var file = selectedFiles[i];
+     // 存取File物件的屬性，取得資訊(※)
+     fileInfos.push("名稱：" + file.name + " 大小：" + file.size);
+   }
+   alert(fileInfos.join("\n"));
+}
+
+</script>
+</head>
+<body>
+<input id="file" type="file" multiple accept="image/*" onchange="showFileInfo()">
+</body>
+</html>
