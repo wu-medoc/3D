@@ -72,7 +72,7 @@ Module.prototype.draw1 = function() {
   push();
   translate(this.x, this.y);
   fill(255);
-  text(message, this.x, this.y);
+  text(message, this.x-10, this.y+60);
   arc(0, -10, l, l, 0.5, PI-0.5);
   arc(0, 10, l, l, PI+0.5, -0.5);
   pop();
@@ -86,7 +86,7 @@ Module.prototype.draw2 = function() {
 
   //ellipse(0, 0, l, l);
   fill(0);
-  text(message, this.x, this.y);
+  text(message, this.x-10, this.y+60);
   ellipse(8, 0, l/2, l/2);
   
   
