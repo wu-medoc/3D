@@ -5,13 +5,13 @@ var mods = [];
 var x;
 var y;
 var count;
-let message = 'mobii',
+let message = 'Mobii!',
   font,
   bounds, 
   fontsize = 50;
 
 function preload() {
-  font = loadFont('assets/SourceSansPro-Regular.otf');
+  font = loadFont('assets/MobiiFont-Regular.otf');
 }
 function setup() {
   createCanvas(windowWidth, windowHeight);
